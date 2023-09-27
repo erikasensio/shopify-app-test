@@ -1,0 +1,36 @@
+<div class="wishlist-open">{% render 'wishlist-icon' %}</div>
+<div class="wishlist hidden">
+  <div class="wishlist-container">
+      <div class="wishlist-container__header">
+        <div class="wishlist-container__header--title">{% render 'wishlist-icon' %}{{ block.settings.title }}</div>
+        <div class="wishlist-container__header--close">{% render 'close' %}</div>
+      </div>
+      {% if customer != blank %}
+          <div class="wishlist-container__products">
+
+          </div>
+          <div class="wishlist-container__footer">
+            {% unless block.settings.addToCart != true %}
+              <button class="wishlist-container__footer--addToCart">{{ 'wishlist.addToCart' | t }}</button>
+            {% endunless %}
+          </div>
+      {% else %}
+          <div class="noLogged-message">{{ 'wishlist.login' | t }}<a class="noLogged-link" href="/account/login">{{ 'wishlist.loginAnchor' | t }}</a></div>
+      {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "target": "section",
+  "stylesheet": "wishlist.css",
+  "javascript": "wishlist.js",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Wishlist" },
+    { "type": "checkbox", "id": "addToCart", "label": "Add to Cart Button?", "default": true }
+  ]
+}
+{% endschema %}
+

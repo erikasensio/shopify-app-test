@@ -1,0 +1,9 @@
+{
+  "wishlist": {
+    "addToCart": "Add to cart",
+    "remove": "Remove",
+    "login": "You need to login to use the wishlist.",
+    "loginAnchor": "Login here",
+    "addToWishlist": "Add to Wishlist"
+  }
+}
