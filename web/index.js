@@ -3,7 +3,8 @@ import { join } from "path";
 import { readFileSync } from "fs";
 import express from "express";
 import serveStatic from "serve-static";
-
+import dotenv from "dotenv";
+import cors from "cors";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import retrieveLoggedUser from "./frontend/retrieve-logged-user.js";
@@ -39,6 +40,7 @@ app.post(
 app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
+app.use(cors())
 
 //SHOWS HOW MANY WISHLIST AREA ACTIVE ON BBDD
 app.get("/api/wishlist/count", async (_req, res) => {

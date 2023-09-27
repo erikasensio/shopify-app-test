@@ -6,6 +6,7 @@
         <div class="wishlist-container__header--close">{% render 'close' %}</div>
       </div>
       {% if customer != blank %}
+          <script>sessionStorage.setItem("user", "{{ customer.id }}")</script>
           <div class="wishlist-container__products">
 
           </div>
