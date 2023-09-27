@@ -1,0 +1,14 @@
+<div class="wishlist-add">{% render 'wishlist-icon' %} {{ 'wishlist.addToWishlist' | t }}</div>
+
+{% schema %}
+{
+  "name": "Add to Wishlist Button",
+  "target": "section",
+  "stylesheet": "wishlist.css",
+  "javascript": "wishlist.js",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Wishlist" },
+    { "type": "checkbox", "id": "addToCart", "label": "Add to Cart Button?", "default": true }
+  ]
+}
+{% endschema %}

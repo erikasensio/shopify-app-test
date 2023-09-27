@@ -4,21 +4,50 @@
     transition: all 500ms;
 }
 
+.wishlist-add {
+    cursor: pointer;
+    display: flex;
+    padding: 8px 16px;
+    border-radius: 0;
+    background-color: #fff;
+    border: 2px solid #000;
+    width: fit-content;
+    gap: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    align-items: center;
+    transition: all 500ms;
+}
+
+.wishlist-open:hover, .wishlist-add:hover {
+    background-color: #000;
+    color: white;
+    transition: all 500ms;
+    border: 2px solid #fff;
+}
+
+.wishlist-open:hover svg *, .wishlist-add:hover svg *{
+    color: white;
+    fill: white;
+    stroke: white;
+    transition: all 500ms;
+}
+
 .wishlist-open {
     display: flex;
-    padding: 8px;
+    padding: 12px;
     border-radius: 100px;
     background-color: #fff;
     border: 2px solid #000;
     position: fixed;
     bottom: 32px;
-    right: 16px;
+    right: 24px;
     z-index: 999;
 }
 
 .wishlist-open svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
 }
 
 
@@ -107,4 +136,5 @@
 
 .noLogged-link {
     color: #000;
+    text-decoration: underline;
 }

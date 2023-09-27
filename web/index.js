@@ -48,14 +48,14 @@ app.get("/api/wishlist/count", async (_req, res) => {
   res.status(200).send(countData);
 });
 
-app.get("/test", (e) => {
+/*app.get("/test", (e) => {
   try {
     e.preventDefault()
     console.log("PRUEBA PRUEBA PRUEBA")
   }catch (error) {
     console.error("ERIK", error.message)
   }
-})
+})*/
 
 // check if user is logged, if it is logged retrieve users and its saved wishlists. Finally renders it into the wishlist section
 app.get("/wishlist", async (_req, res) => {
