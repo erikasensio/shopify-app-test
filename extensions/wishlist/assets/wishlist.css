@@ -1,0 +1,110 @@
+.hidden {
+    display: none !important;
+    opacity: 0;
+    transition: all 500ms;
+}
+
+.wishlist-open {
+    display: flex;
+    padding: 8px;
+    border-radius: 100px;
+    background-color: #fff;
+    border: 2px solid #000;
+    position: fixed;
+    bottom: 32px;
+    right: 16px;
+    z-index: 999;
+}
+
+.wishlist-open svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+.wishlist {
+    opacity: 1;
+    transition: all 500ms;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 48px 72px;
+    z-index: 999999999999999999999;
+}
+
+.wishlist-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 48px;
+    justify-content: space-between;
+}
+
+.wishlist-container__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #CACACA;
+    padding-bottom: 16px;
+    align-items: center;
+}
+
+.wishlist-container__products {
+    height: 100%;
+    border-bottom: 1px solid #CACACA;
+}
+
+.wishlist-container__header--title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 1000;
+    color: #000;
+}
+
+.wishlist-container__header--close, .wishlist-container__header--close svg {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.wishlist-container__footer {
+    padding-top: 16px;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wishlist-container__footer--addToCart {
+    background-color: white;
+    border-radius: 0;
+    border: 2px solid black;
+    box-shadow: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.noLogged-message {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.noLogged-link {
+    color: #000;
+}

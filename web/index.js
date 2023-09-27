@@ -6,6 +6,7 @@ import serveStatic from "serve-static";
 
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
+import retrieveLoggedUser from "./frontend/retrieve-logged-user.js";
 import GDPRWebhookHandlers from "./gdpr.js";
 
 const PORT = parseInt(
@@ -39,14 +40,25 @@ app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
-app.get("/api/products/count", async (_req, res) => {
+//SHOWS HOW MANY WISHLIST AREA ACTIVE ON BBDD
+app.get("/api/wishlist/count", async (_req, res) => {
   const countData = await shopify.api.rest.Product.count({
     session: res.locals.shopify.session,
   });
   res.status(200).send(countData);
 });
 
-app.get("/api/products/create", async (_req, res) => {
+app.get("/test", (e) => {
+  try {
+    e.preventDefault()
+    console.log("PRUEBA PRUEBA PRUEBA")
+  }catch (error) {
+    console.error("ERIK", error.message)
+  }
+})
+
+// check if user is logged, if it is logged retrieve users and its saved wishlists. Finally renders it into the wishlist section
+app.get("/wishlist", async (_req, res) => {
   let status = 200;
   let error = null;
 
@@ -63,6 +75,7 @@ app.get("/api/products/create", async (_req, res) => {
 app.use(shopify.cspHeaders());
 app.use(serveStatic(STATIC_PATH, { index: false }));
 
+// just checks if the app is installed in the store
 app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
   return res
     .status(200)
