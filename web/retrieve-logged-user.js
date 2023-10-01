@@ -1,12 +1,10 @@
 import { GraphqlQueryError } from "@shopify/shopify-api";
 import shopify from "./shopify.js";
-import {DEFAULT_PRODUCTS_COUNT} from "../product-creator";
 
-export default async function retrieveLoggedUser(session, user) {
+export default async function retrieveLoggedUser(userId) {
   const client = new shopify.api.clients.Graphql({ session });
-
   try {
-    console.log(client)
+    console.log(userId)
   } catch (error) {
     if (error instanceof GraphqlQueryError) {
       throw new Error(

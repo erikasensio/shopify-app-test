@@ -3,35 +3,42 @@ const addToWishlistButton = document.querySelector(".wishlist-add")
 const wishlist = document.querySelector(".wishlist")
 const wishlistClose = document.querySelector(".wishlist-container__header--close")
 
-const handleRetrieveWishlist = () => {
+const handleRetrieveWishlist = (user) => {
     /*for (let product = 0; product < user.wishlist.length; product++) {
         const productID = user.wishlist[product]*/
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/graphql");
-    // TODO: Access Token in .env, investigate about product images retrieve with graphQL
-    myHeaders.append("X-Shopify-Storefront-Access-Token", "b749f0479c9ee852bd8766019fc1e7ed");
+    //fetch call to /wishlist?
+    console.log("retrieving wishlist...")
 
-    var raw = "\nquery {\n  products(first: 10, query:\"id: gid://shopify/Product/6756883136561\"){\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}";
+}
+const retrieveUserId = (session) => {
+    const client = new shopify.api.clients.Graphql({ session });
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    var requestOptions = {
+    const raw = JSON.stringify({
+        "userId": localStorage.getItem("userId")
+    });
+
+    const requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
     };
 
-    fetch("/api/2023-01/graphql.json", requestOptions)
+    fetch("https://erik-wishlist-app.fly.dev/userId", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(JSON.parse(result)))
-        .catch(error => console.log('error', error));
-    /*}*/
-    //fetch call to /wishlist?
+        .then(result => {
+            console.log(result);
+            return result
+        })
+        .catch(error => console.log('error', error.message));
 }
 
 if (wishlistOpen !== null && wishlist !== null) {
     wishlistOpen.addEventListener("click", function (e) {
         wishlist.classList.remove("hidden")
-        handleRetrieveWishlist()
+        handleRetrieveWishlist(localStorage.getItem("userId"))
         //retrieve user info from shopify with graphQL sending user email by UTM and post it on BBDD with an endpoint and iterate all user info in the app, in case it already exists retrieve and render his actual wishlisted products.
     })
 }

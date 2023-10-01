@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for erik-wishlist-app on 2023-09-30T16:07:10+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "erik-wishlist-app"
+primary_region = "mad"
+
+[build]
+
+[env]
+  ADMIN_ACCESS_TOKEN = "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"
+  HOST = "https://erik-wishlist-app.fly.dev"
+  PORT = "3000"
+  BACKEND_PORT = "3000"
+  SCOPES = "write_products, write_customers"
+  SHOPIFY_API_KEY = "22d6008c5eda4a813daccc276e20d7bf"
+  SHOPIFY_API_SECRET = "f4b25f4ff5db3e02c598b455cfe86c73"
+  STOREFRONT_ACCESS_TOKEN = "b749f0479c9ee852bd8766019fc1e7ed"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
